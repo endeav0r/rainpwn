@@ -10,8 +10,9 @@ local function log_privmsg (input, msg)
     local log_line = "[" .. os.date("%d-%b-%Y %H:%M") .. "] <" ..
                      msg.sender .. "> " .. input
     local filename
-    if msg.args[1] == USERNAME then
-        filename = config.LOG_PATH .. msg.sender
+    if msg.args[1] == config.USERNAME then
+        return nil
+        --filename = config.LOG_PATH .. msg.sender
     else
         filename = config.LOG_PATH .. msg.args[1]
     end
