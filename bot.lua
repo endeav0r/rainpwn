@@ -79,8 +79,20 @@ function luabot:join (channel)
 end
 
 function luabot:pong (message)
-    local msg = "PONG :" .. message
-    self:send(msg)
+    self:send("PONG :" .. message)
 end
+
+function luabot:kick (channel, nick)
+    self:send("KICK " .. channel .. " " .. nick)
+end
+
+function luabot:part (channel)
+    self:send("PART " .. channel)
+end
+
+function luabot:op (channel, nick)
+    self:send("MODE " .. channel .. " +o " .. nick)
+end
+    
 
 return luabot
