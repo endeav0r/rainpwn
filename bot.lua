@@ -34,7 +34,7 @@ function luabot:recv ()
         if index == nil then
             msg.sender = nil
         else
-            msg.sender = string.sub(msg.source, 1, index - 1)
+            msg.sender = string.lower(string.sub(msg.source, 1, index - 1))
         end
     end
 
