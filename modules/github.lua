@@ -8,6 +8,7 @@ local github = {}
 local projects = {}
 projects["ravm"] = "endeav0r/ravm/master"
 projects["rt"] = "endeav0r/Rainbows-And-Pwnies-Tools/master"
+projects["rainpwn"] = "endeav0r/rainpwn/master"
 
 local function github_api (url)
     local response = {}
