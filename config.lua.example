@@ -1,0 +1,10 @@
+local config = {}
+config.USERNAME = "EXAMPLE_USERNAME"
+config.PASSWORD = "EXAMPLE_PASSWORD" -- set to nil if bot not registered with
+                                     -- nickserv
+config.CHANNELS = {"#EXAMPLE_CHANNEL"}
+
+-- this is a prefixed path for the log module
+config.LOG_PATH = "logs/"
+
+return config
