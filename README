@@ -1,0 +1,23 @@
+----------------------------------------
+-- RAINPWN
+----------------------------------------
+This is the IRC bot that can be found in irc.freenode.net#rainbowsandpwnies
+
+----------------------------------------
+-- DEPENDENCIES
+----------------------------------------
+Currently tested with lua 5.1.4
+
+You also need luasocket and luajson, both available from luarocks
+
+~# luarocks install luasocket
+~# luarocks install luajson
+
+----------------------------------------
+-- RUNNING
+----------------------------------------
+Modify config.lua.example to match your needs and rename the file config.lua
+
+Make sure you create the folder where you plan to store your logs
+
+~$ lua rainpwn.lua
