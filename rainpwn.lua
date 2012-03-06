@@ -13,17 +13,30 @@ if config.PASSWORD ~= nil then
 end
 for k, channel in pairs(config.CHANNELS) do b:join(channel) end
 
+
 local modules = {}
-modules["haxathon"] = haxathon.command
-modules["github"]   = github.command
-modules["log"]      = log.command
-modules["static"]   = static.command
-modules["admin"]    = admin.command
+modules["haxathon"] = haxathon
+modules["github"]   = github
+modules["log"]      = log
+modules["static"]   = static
+modules["admin"]    = admin
+
 
 function command (text, msg)
     local responses = {}
-    for k, exec in pairs(modules) do
-        local response = exec(text, msg)
+    for k, module in pairs(modules) do
+
+        -- send input to this module
+        local response
+        if msg.command == "PRIVMSG" and module.privmsg ~= nil then
+            response = module.privmsg(text, msg)
+        elseif msg.command == "NOTICE" and module.notice ~= nil then
+            response = module.notice(text, msg)
+        else
+            response = nil
+        end
+
+        -- save responses to spit back out to the user
         if response ~= nil then
             print(response)
             table.insert(responses, response)
@@ -32,10 +45,11 @@ function command (text, msg)
     return responses
 end
 
+
 while true do
     local msg = b:recv()
     if msg ~= nil then
-        if msg.command == "PRIVMSG" then
+        if msg.command == "PRIVMSG" or msg.command == "NOTICE" then
             local responses = command(msg.final, msg)
             for k, response in pairs(responses) do
                 if msg.args[1] == USERNAME then
