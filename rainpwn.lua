@@ -3,6 +3,7 @@ local config   = require("config")
 local github   = require("modules.github")
 local haxathon = require("modules.haxathon")
 local log      = require("modules.log")
+local static   = require("modules.static")
 
 b = bot:new("irc.freenode.net", 6667, config.USERNAME)
 b:connect()
@@ -13,8 +14,9 @@ for k, channel in pairs(config.CHANNELS) do b:join(channel) end
 
 local modules = {}
 modules["haxathon"] = haxathon.command
-modules["github"] = github.command
-modules["log"] = log.command
+modules["github"]   = github.command
+modules["log"]      = log.command
+modules["static"]   = static.command
 
 function command (text, msg)
     local responses = {}
