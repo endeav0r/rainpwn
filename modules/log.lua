@@ -6,7 +6,7 @@ require("util")
 
 local log = {}
 
-local function log_command (input, msg)
+local function log_privmsg (input, msg)
     local log_line = "[" .. os.date("%d-%b-%Y %H:%M") .. "] <" ..
                      msg.sender .. "> " .. input
     local filename
@@ -23,6 +23,6 @@ local function log_command (input, msg)
     return nil
 end
 
-log.command = log_command
+log.privmsg = log_privmsg
 
 return log

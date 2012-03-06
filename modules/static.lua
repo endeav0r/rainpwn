@@ -2,7 +2,7 @@ require("util")
 
 local static = {}
 
-local function static_command (input, msg)
+local function static_privmsg (input, msg)
     pieces = string.split(" ", input)
     if pieces[1] == "!help" then
         return "rainpwn bot | " ..
@@ -11,6 +11,6 @@ local function static_command (input, msg)
     return nil
 end
 
-static.command = static_command
+static.privmsg = static_privmsg
 
 return static

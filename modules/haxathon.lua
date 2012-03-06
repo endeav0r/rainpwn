@@ -21,7 +21,7 @@ local function haxathon_score (username)
     end
 end
 
-local function haxathon_command (input, msg)
+local function haxathon_privmsg (input, msg)
     pieces = string.split(" ", input)
     if pieces[1] == "!haxathon" then
         return haxathon_score(pieces[2])
@@ -29,7 +29,7 @@ local function haxathon_command (input, msg)
     return nil
 end
 
-haxathon.scores = haxathon_scores
-haxathon.command = haxathon_command
+haxathon.scores  = haxathon_scores
+haxathon.privmsg = haxathon_privmsg
 
 return haxathon

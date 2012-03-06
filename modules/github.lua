@@ -21,7 +21,7 @@ local function github_api (url)
 end
 
 local function github_lastcommit (project)
-    local commits = github_api('https://github.com/api/v2/json/commits/list/' .. project)
+    local commits = github_api("https://github.com/api/v2/json/commits/list/" .. project)
     if commits == nil then
         return "error getting commits"
     end
@@ -29,7 +29,7 @@ local function github_lastcommit (project)
            commits["commits"][1]["message"]
 end
 
-local function github_command (input, msg)
+local function github_privmsg (input, msg)
     pieces = string.split(" ", input)
     if pieces[1] == "!lastcommit" then
         if projects[pieces[2]] == nil then
@@ -41,8 +41,8 @@ local function github_command (input, msg)
     return nil
 end
 
-github.api = github_api
+github.api         = github_api
 github.last_commit = github_lastcommit
-github.command = github_command
+github.privmsg     = github_privmsg
 
 return github
