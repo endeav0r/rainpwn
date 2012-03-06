@@ -4,6 +4,7 @@ local github   = require("modules.github")
 local haxathon = require("modules.haxathon")
 local log      = require("modules.log")
 local static   = require("modules.static")
+local admin    = require("modules.admin")
 
 b = bot:new("irc.freenode.net", 6667, config.USERNAME)
 b:connect()
@@ -17,6 +18,7 @@ modules["haxathon"] = haxathon.command
 modules["github"]   = github.command
 modules["log"]      = log.command
 modules["static"]   = static.command
+modules["admin"]    = admin.command
 
 function command (text, msg)
     local responses = {}
